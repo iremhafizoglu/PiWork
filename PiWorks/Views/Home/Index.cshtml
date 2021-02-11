@@ -1,0 +1,38 @@
+﻿@model List<User>
+
+<div>
+    <a href="/home/form" class="btn btn-primary mb-3">Add User</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Username</td>
+            <td>E-mail</td>
+            <td>Enabled</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var user in Model)
+            {
+<tr>
+    <td>@user.UserRole</td>
+    <td>@user.Email</td>
+    <td>@(user.Enabled ? "Yes" : "No")</td>
+    <td>
+        <a class="btn btn-primary" href="/home/form/@user.Id">Edit</a>
+    </td>
+</tr> }
+            }
+            else
+            {
+<tr>
+    <td colspan="6" class="text-center">
+        There is no record.
+    </td>
+</tr>}
+    </tbody>
+</table>
